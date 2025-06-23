@@ -53,6 +53,19 @@ aws iam list-open-id-connect-providers
 - Create a new EC2 Keypair with name as `kube-demo`
 - This keypair we will use it when creating the EKS NodeGroup.
 - This will help us to login to the EKS Worker Nodes using Terminal.
+```                   
+# Create a new EC2 Keypair with name as `kube-demo`
+aws ec2 create-key-pair \
+  --key-name kube-demo \
+  --query 'KeyMaterial' \
+  --output text > kube-demo.pem
+
+# Validate.
+aws ec2 describe-key-pairs \
+  --query "KeyPairs[*].KeyName" \
+  --output text
+```
+
 
 ## Step-04: Create Node Group with additional Add-Ons in Public Subnets
 - These add-ons will create the respective IAM policies for us automatically within our Node Group role.

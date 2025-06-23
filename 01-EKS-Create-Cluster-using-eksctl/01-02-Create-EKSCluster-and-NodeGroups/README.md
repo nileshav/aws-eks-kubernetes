@@ -42,6 +42,9 @@ eksctl utils associate-iam-oidc-provider \
     --region us-east-1 \
     --cluster eksdemo1 \
     --approve
+
+# Validate IAM OIDC provider with your EKS cluster.
+aws iam list-open-id-connect-providers
 ```
 
 
